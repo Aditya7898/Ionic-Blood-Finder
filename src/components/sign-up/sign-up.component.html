@@ -1,0 +1,41 @@
+<form [formGroup]="signUpForm" (ngSubmit)="register()">
+    <ion-item>
+        <ion-label floating>Full Name</ion-label>
+        <ion-input class="form-control" formControlName="Name" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label floating>Email</ion-label>
+        <ion-input class="form-control" formControlName="Email" type="email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label floating>Contact Number</ion-label>
+        <ion-input class="form-control" formControlName="Contact" type="number"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label floating>Blood Group</ion-label>
+        <ion-select formControlName="BloodGroup">
+            <ion-option *ngFor="let group of bloodGroups" [value]="group.value" class="form-control">
+              {{ group.value }}
+            </ion-option>          
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+          <ion-label floating>Cities</ion-label>
+          <ion-select formControlName="City">
+              <ion-option *ngFor="let city of cities" [value]="city.value" class="form-control">
+                {{ city.value }}
+              </ion-option>          
+          </ion-select>
+      </ion-item>
+
+    <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-input class="form-control" formControlName="Password" type="text"></ion-input>
+    </ion-item>
+
+    <button type="submit" ion-button block>Register</button>
+</form>

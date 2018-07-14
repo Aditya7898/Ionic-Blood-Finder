@@ -1,0 +1,41 @@
+<div class="search">
+  <h3 style="padding:12px;">Search Blood</h3>
+</div>
+
+<form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+  <ion-item>
+    <ion-label floating>Blood Group</ion-label>
+    <ion-select formControlName="Pbloodgroup">
+      <ion-option *ngFor="let group of bloodGroups" [value]="group.value" class="form-control">
+        {{ group.value }}
+      </ion-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Cities</ion-label>
+    <ion-select formControlName="Pcity">
+      <ion-option *ngFor="let city of cities" [value]="city.value" class="form-control">
+        {{ city.value }}
+      </ion-option>
+    </ion-select>
+  </ion-item>
+
+ 
+ 
+    <!-- <button  block ion-button>Search</button>
+    <button  ion-button block (click)="reset()">Reset</button> -->
+
+</form>
+
+
+<div *ngIf="requiredDoners.length !=0" style="margin-top: 20px;">
+  <h4 style="padding:12px;background:#c8c2c2;border: 1px solid #c8c2c2;">Search Results</h4>
+  <ion-list>
+    <ion-item *ngFor="let user of requiredDoners">
+      <h2>{{ user.Name }}</h2>
+      <p>{{ user.City}}</p>
+      <button ion-button clear item-end (click)="open(user)">View</button>
+     </ion-item>
+  </ion-list>
+</div>

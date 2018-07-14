@@ -1,0 +1,7 @@
+<ion-list>
+  <ion-item  *ngFor="let request of requestList | async; let i = index">
+    <h2>{{ request.Pname }}</h2>
+    <p>{{ request.Pbloodgroup }}</p>
+    <button ion-button clear item-end (click)="open(request)">View</button>
+  </ion-item>
+</ion-list>
