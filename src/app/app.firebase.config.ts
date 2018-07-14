@@ -3,7 +3,7 @@ export const FIREBASE_CONFIG = {
   authDomain: 'bloodfinder-36489.firebaseapp.com',
   databaseURL: 'https://bloodfinder-36489.firebaseio.com',
   projectId: 'bloodfinder-36489',
-  storageBucket: '',
+  storageBucket: 'bloodfinder-36489.appspot.com',
   messagingSenderId: '73894989116'
   };
  

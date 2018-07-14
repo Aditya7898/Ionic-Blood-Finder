@@ -19,9 +19,14 @@ import { BasicInfoService } from '../providers/basic-info/basic-info.service';
 import { BloodSearchService } from '../providers/blood-search/blood-search.service';
 import { AuthService } from '../providers/auth-service/auth-service.service';
 
+import { GoogleMaps } from '@ionic-native/google-maps';
+import { Geolocation } from '@ionic-native/geolocation';
+import { MapPage } from '../pages/map/map';
+
 @NgModule({
   declarations: [
     MyApp,
+    MapPage
   ],
   imports: [
     BrowserModule,
@@ -36,8 +41,11 @@ import { AuthService } from '../providers/auth-service/auth-service.service';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    MapPage
   ],
   providers: [
+    Geolocation,
+    GoogleMaps,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},

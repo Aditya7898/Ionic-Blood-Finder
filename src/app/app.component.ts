@@ -4,6 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AuthService } from '../providers/auth-service/auth-service.service';
+import { MapPage } from '../pages/map/map';
 
 @Component({
   templateUrl: 'app.html'
@@ -31,6 +32,9 @@ export class MyApp {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page);
+  }
+  map(){
+    this.nav.setRoot(MapPage)
   }
   logout(page){
      this.nav.setRoot(page);
