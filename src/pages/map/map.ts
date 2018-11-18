@@ -12,8 +12,9 @@ export class MapPage {
   latLng:any;
   markers:any;
   mapOptions:any;  
-  isKM:any=500;
+  isKM:any=10;
   isType:any="";
+  num: number =0;
  
   constructor(private ngZone: NgZone, private geolocation : Geolocation) { }
   ionViewDidLoad() {
@@ -22,21 +23,23 @@ export class MapPage {
   loadMap(){
     this.geolocation.getCurrentPosition().then((position) => {
     this.latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-          console.log('latLng',this.latLng);
+          console.log('latLng',this.latLng, this.num++);
      
       this.mapOptions = {
         center: this.latLng,
-        zoom: 14,
+        zoom: 15,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       }   
     this.map = new google.maps.Map(this.mapElement.nativeElement, this.mapOptions);
     }, (err) => {
       alert('err '+err);
     });
+    // this.nearbyPlace();
   }
 
  /*--------------------Find Nearby Place------------------------*/ 
   nearbyPlace(){
+
     this.loadMap();
     this.markers = [];
     let service = new google.maps.places.PlacesService(this.map);
@@ -47,6 +50,7 @@ export class MapPage {
             }, (results, status) => {
                 this.callback(results, status);
             });
+            console.log(this.isType)
   }
   callback(results, status) {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
@@ -57,13 +61,15 @@ export class MapPage {
   }
   createMarker(place){
     var placeLoc = place;
+    this.num++;
     console.log('placeLoc',placeLoc);
+    
     this.markers = new google.maps.Marker({
         map: this.map,
         animation: google.maps.Animation.DROP,
         position: place.geometry.location
     });
-    this.addInfoWindow(this.markers, 'Hii');
+    this.addInfoWindow(this.markers, this.markers.name);
     // let infowindow = new google.maps.InfoWindow();
     // google.maps.event.addListener(this.markers, 'click', () => {
     //   this.ngZone.run(() => {
@@ -73,18 +79,18 @@ export class MapPage {
     // });
   }
 
-  addMarker(){
+  // addMarker(){
  
-    let marker = new google.maps.Marker({
-      map: this.map,
-      animation: google.maps.Animation.DROP,
-      position: this.map.getCenter()
-    });
+  //   let marker = new google.maps.Marker({
+  //     map: this.map,
+  //     animation: google.maps.Animation.DROP,
+  //     position: this.map.getCenter()
+  //   });
    
-    let content = "<h4>Information!</h4>";         
+  //   let content = "<h4>Information!</h4>";         
    
-    this.addInfoWindow(marker, content);
-  }
+  //   this.addInfoWindow(marker, content);
+  // }
 
   addInfoWindow(marker, content){
  

@@ -1,56 +1,71 @@
-<form [formGroup]="requestForm" (ngSubmit)="request()">
+<form *ngIf="isAbleToRequest" [formGroup]="requestForm" (ngSubmit)="request()">
   <ion-item>
-      <ion-label floating>Patient Name</ion-label>
-      <ion-input class="form-control" formControlName="Pname" type="text"></ion-input>
+    <ion-label floating>Patient Name</ion-label>
+    <ion-input class="form-control" formControlName="Pname" type="text"></ion-input>
   </ion-item>
 
-  <ion-item>
-    <ion-label floating>Blood Group</ion-label>
-    <ion-select formControlName="Pbloodgroup">
-        <ion-option *ngFor="let group of bloodGroups" [value]="group.value" class="form-control">
-          {{ group.value }}
-        </ion-option>          
-    </ion-select>
-  </ion-item>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-6>
+        <ion-item>
+          <ion-label floating>Blood Group</ion-label>
+          <ion-select formControlName="Pbloodgroup">
+            <ion-option *ngFor="let group of bloodGroups" [value]="group.value" class="form-control">
+              {{ group.value }}
+            </ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+      <ion-col col-6>
+        <ion-item>
+          <ion-label floating>City</ion-label>
+          <ion-select formControlName="Pcity">
+            <ion-option *ngFor="let city of cities" [value]="city.value" class="form-control">
+              {{ city.value }}
+            </ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
-  <ion-item>
-    <ion-label floating>Cities</ion-label>
-    <ion-select formControlName="Pcity">
-        <ion-option *ngFor="let city of cities" [value]="city.value" class="form-control">
-          {{ city.value }}
-        </ion-option>          
-    </ion-select>
-</ion-item>
 
-  
+
   <ion-item>
     <ion-label floating>Hospital Details</ion-label>
     <ion-input class="form-control" formControlName="Address" type="text"></ion-input>
-</ion-item>
-
-<ion-item>
-  <ion-label floating> Doctor Name</ion-label>
-  <ion-input class="form-control" formControlName="Pdoctor" type="text"></ion-input>
-</ion-item>
-
-<ion-item>
-  <ion-label floating>Contact Name</ion-label>
-  <ion-input class="form-control" formControlName="Cname"></ion-input>
-</ion-item>
-
-  <ion-item>
-      <ion-label floating>Email</ion-label>
-      <ion-input class="form-control" formControlName="Cemail" type="email"></ion-input>
   </ion-item>
 
   <ion-item>
-      <ion-label floating>Contact Number</ion-label>
-      <ion-input class="form-control" formControlName="Ccontact" type="number"></ion-input>
+    <ion-label floating> Doctor Name</ion-label>
+    <ion-input class="form-control" formControlName="Pdoctor" type="text"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label floating>Date</ion-label>
+    <ion-label floating>Contact Name</ion-label>
+    <ion-input class="form-control" formControlName="Cname"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Email</ion-label>
+    <ion-input class="form-control" formControlName="Cemail" type="email"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Contact Number</ion-label>
+    <ion-input class="form-control" formControlName="Ccontact" type="number"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Date when needed</ion-label>
     <ion-input class="form-control" formControlName="Cdate" type="date"></ion-input>
-</ion-item>
-  <button type="submit" ion-button block>Request</button>
+  </ion-item>
+  <button type="submit" [disabled]="requestForm.status == 'INVALID'" ion-button block>Request</button>
 </form>
+
+
+<ion-card *ngIf="!isAbleToRequest">
+  <ion-card-content>
+      <p style="font-size:19px;font-weight:500">To request for Blood you need to Sign In.</p>
+  </ion-card-content>
+</ion-card>

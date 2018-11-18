@@ -20,6 +20,11 @@ export class ModalsPage {
   userInfo: any;
   request: any;
 
+     nonEligible: any[];
+     preperation: any[];
+     postcare:    any[];
+
+
   constructor(public navParams: NavParams, private view: ViewController,
               private callNumber: CallNumber, private emailComposer: EmailComposer) {
   }
@@ -30,6 +35,14 @@ export class ModalsPage {
 
     this.request = this.navParams.get('request');
     console.log(this.request);
+
+    // Guidelines
+    this.nonEligible = this.navParams.get('nonEligible');
+    console.log(this.nonEligible)
+    this.preperation = this.navParams.get('preperation')
+    console.log(this.preperation)
+    this.postcare = this.navParams.get('postcare')
+    console.log(this.postcare)
   }
 
   call(number){
@@ -68,5 +81,9 @@ export class ModalsPage {
   closeModal(){
    this.view.dismiss();
   }
+
+
+  // Guidelines 
+
 
 }

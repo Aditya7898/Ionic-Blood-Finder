@@ -1,3 +1,4 @@
+<h4 style="font-size:16px;color:#379707;text-align: center">“There is a hope of life to someone in your blood donation.”</h4>
 <form [formGroup]="loginForm" (ngSubmit)="login()">
 
     <ion-item>
@@ -7,8 +8,9 @@
 
     <ion-item>
         <ion-label floating>Password</ion-label>
-        <ion-input class="form-control" formControlName="Password" type="text"></ion-input>
+        <ion-input class="form-control" formControlName="Password" type="password"></ion-input>
     </ion-item>
 
-    <button type="submit" ion-button block>Login</button>
+    <button type="submit"  [disabled]="loginForm.status == 'INVALID'" ion-button block>Login</button>
+    <button type="button"ion-button clear [disabled]="!loginForm.value.Email" (click)="forgot()">forgot password ?</button>
 </form>

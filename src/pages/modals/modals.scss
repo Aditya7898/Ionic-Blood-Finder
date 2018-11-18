@@ -1,10 +1,58 @@
 page-modals {
     .item-md ion-icon{
-        color:#6b6c6f;
+        color:#369407;
         font-size: 15px;
+    }
+    ion-content{
+        background: linear-gradient(#c6eab6,#3eb63b);
     }
     .label-md {
         margin: 10px 0px 12px 0;
         font-size: 15px;
+    }
+    li{
+        padding-bottom: 12px;
+        line-height: 30px;
+        font-size: 15px;
+        letter-spacing: 1px;
+        list-style-type: decimal-leading-zero;
+    }
+    .item-md ion-icon{
+       font-size: 21px;
+    }
+    .item-md{
+        padding-left: 15px;
+    }
+    .label-md {
+        font-weight: 500;
+    }    
+    .card-title-md{
+        padding: 0px;
+    }
+    .noneligible{
+        font-weight: 600;
+        background: #fff;
+        color: #000000;
+    }
+    .eligible{
+        font-weight: 600;
+        background: #fff;
+        color: #000000;
+    }
+    .care{
+        font-weight: 600;
+        background: #fff;
+        color: #000000;
+    }
+    .title{
+        font-weight: 600;
+        font-size: 22px;
+    }
+    .hr{
+        background-color: #000;
+        height: 1px;
+    }
+    h4{
+        font-weight: 500;
     }
 }

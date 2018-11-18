@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "114764460531",
+    "firebase_url": "https://composite-baton-210204.firebaseio.com",
+    "project_id": "composite-baton-210204",
+    "storage_bucket": "composite-baton-210204.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:114764460531:android:964bb1064fdc3583",
+        "android_client_info": {
+          "package_name": "com.blood.finder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "114764460531-dn3oc1stfg5ofppiv3vr4p0kk8ntin21.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZyO05r3K_hdixMbDt9T02boz_AY5Db7I"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

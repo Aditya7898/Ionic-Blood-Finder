@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { BloodSearchService } from '../../providers/blood-search/blood-search.service';
 import { BasicInfoService } from '../../providers/basic-info/basic-info.service';
 import { AlertController } from 'ionic-angular';
+import { AuthService } from '../../providers/auth-service/auth-service.service';
 
 /**
  * Generated class for the RequestBloodComponent component.
@@ -16,13 +17,15 @@ import { AlertController } from 'ionic-angular';
 })
 export class RequestBloodComponent implements OnInit{
 
+  isAbleToRequest = false;
+  
   bloodGroups: { value: string; }[];
   cities: { value: string; }[];
   requestForm: FormGroup;
 
   @Output() requestResponse: EventEmitter<any>;
 
-  constructor(private bloodService: BloodSearchService,
+  constructor(private bloodService: BloodSearchService, private auth: AuthService,
      private info: BasicInfoService, private alerCtrl: AlertController) {
     this.cities = info.cities;
     this.bloodGroups = info.bloodGroups;
@@ -31,6 +34,12 @@ export class RequestBloodComponent implements OnInit{
   
 
   ngOnInit(){
+    this.auth.user$.subscribe((user) => {
+      if(user) {
+        this.isAbleToRequest = true;
+      }
+    });
+
     this.requestForm = new FormGroup({
       'Pname': new FormControl( null, Validators.required),
       'Pbloodgroup': new FormControl(null, [Validators.required]),
@@ -46,6 +55,7 @@ export class RequestBloodComponent implements OnInit{
   }
 
   request(){
+    console.log(this.requestForm)
    this.bloodService.request(this.requestForm).then(res => {
 
     this.requestResponse.emit(res);

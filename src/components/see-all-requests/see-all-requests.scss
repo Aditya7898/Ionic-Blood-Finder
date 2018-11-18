@@ -1,3 +1,19 @@
 see-all-requests {
-
+   span.button-inner{
+    padding: 5px;
+   }
+   #font{
+    font-family: 'Vollkorn', serif;
+    font-weight: 600;
+    margin-top:3px
+   }
+   .item-md.item-block .item-inner {
+     padding-right: 8px; 
+     border-bottom: 1px solid green;
+   }
+   #bloodgroup{
+    font-family: 'Vollkorn', serif;
+    font-weight: 600;
+    color: red
+   }
 }

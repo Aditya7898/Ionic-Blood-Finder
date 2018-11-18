@@ -1,31 +1,39 @@
-<div class="search">
-  <h3 style="padding:12px;">Search Blood</h3>
-</div>
+<h5 class="quote">“Donate blood and be the reason of smile to many faces.”</h5>
 
-<form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
-  <ion-item>
-    <ion-label floating>Blood Group</ion-label>
-    <ion-select formControlName="Pbloodgroup">
-      <ion-option *ngFor="let group of bloodGroups" [value]="group.value" class="form-control">
-        {{ group.value }}
-      </ion-option>
-    </ion-select>
-  </ion-item>
+<form [formGroup]="searchForm">
+    <ion-row>
+      <ion-col>
+        <ion-item>
+            <h4 style="font-weight: 600;font-size: 20px;">Search for Blood Doner</h4>
+        </ion-item>
+      </ion-col>
+    </ion-row>
 
-  <ion-item>
-    <ion-label floating>Cities</ion-label>
-    <ion-select formControlName="Pcity">
-      <ion-option *ngFor="let city of cities" [value]="city.value" class="form-control">
-        {{ city.value }}
-      </ion-option>
-    </ion-select>
-  </ion-item>
+  <ion-row>
+    <ion-col>
+      <ion-item>
+        <ion-label floating>Blood Group</ion-label>
+        <ion-select formControlName="Pbloodgroup">
+          <ion-option *ngFor="let group of bloodGroups" [value]="group.value" class="form-control">
+            {{ group.value }}
+          </ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-col>
+  </ion-row>
 
- 
- 
-    <!-- <button  block ion-button>Search</button>
-    <button  ion-button block (click)="reset()">Reset</button> -->
-
+  <ion-row>
+    <ion-col>
+      <ion-item>
+        <ion-label floating>City</ion-label>
+        <ion-select formControlName="Pcity">
+          <ion-option type="button" *ngFor="let city of cities" [value]="city.value" class="form-control">
+            {{ city.value }}
+          </ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-col>
+  </ion-row>
 </form>
 
 
@@ -36,6 +44,6 @@
       <h2>{{ user.Name }}</h2>
       <p>{{ user.City}}</p>
       <button ion-button clear item-end (click)="open(user)">View</button>
-     </ion-item>
+    </ion-item>
   </ion-list>
 </div>

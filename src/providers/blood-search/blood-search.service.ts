@@ -16,20 +16,25 @@ export class BloodSearchService {
   }
   
   request(data: FormGroup) {
-    this.requestList = this.db.list('requests');
-    console.log(this.requestList);
-    return  this.requestList.push({
-        Pbloodgroup: data.value.Pbloodgroup,
-        Pcity: data.value.Pcity,
-        Pdoctor: data.value.Pdoctor,
-        Address: data.value.Address,
-        Cname: data.value.Cname,
-        Ccontact: data.value.Ccontact,
-        Cemail: data.value.Cemail,
-        Pname: data.value.Pname,
-        Cdate: data.value.Cdate.toString()
-      });
+    try{
+     this.requestList = this.db.list('requests');
+      console.log(this.requestList);
+      return  this.requestList.push({
+          Pbloodgroup: data.value.Pbloodgroup,
+          Pcity: data.value.Pcity,
+          Pdoctor: data.value.Pdoctor,
+          Address: data.value.Address,
+          Cname: data.value.Cname,
+          Ccontact: data.value.Ccontact,
+          Cemail: data.value.Cemail,
+          Pname: data.value.Pname,
+          Cdate: data.value.Cdate.toString()
+        });
+      
+    } catch(error){
+          return error;
     }
+ }
   // bloodSearchResults(searchCity, searchBlood) {
   //   console.log(this.requiredDoners);
     

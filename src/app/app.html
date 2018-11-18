@@ -1,71 +1,73 @@
 <ion-menu [content]="content">
   <ion-header>
-    <ion-toolbar>
+    <ion-toolbar color="toolbar">
       <ion-title>Menu</ion-title>
     </ion-toolbar>
   </ion-header>
 
   <ion-content>
     <ion-list>
-
+      <!-- <div class="image">
+          <img src="https://image.freepik.com/free-vector/blood-donation-logo_23-2147506524.jpg"/>
+      </div> -->
 
       <button menuClose ion-item (click)="openPage('HomePage')">
-        <ion-icon name="home" item-start></ion-icon>
-        Home
+        <ion-icon id="ion-icon" name="home" item-start></ion-icon>
+        <span id="fontMenu">Home</span>
       </button>
 
-      <button menuClose ion-item (click)="map()">
+      <!-- <button menuClose ion-item (click)="map()">
         <ion-icon name="map" item-start></ion-icon>
         Map
-      </button>
+      </button> -->
 
       <button menuClose ion-item (click)="openPage('RequestBloodPage')">
-        <ion-icon name="paper-plane" item-start></ion-icon>
-        Request Blood
+        <ion-icon id="ion-icon" name="paper-plane" item-start></ion-icon>
+        <span id="fontMenu">Request Blood</span>
       </button>
 
       <button menuClose ion-item (click)="openPage('SeeAllRequestPage')">
-        <ion-icon name="list-box" item-start></ion-icon>
-        See All Requests
+        <ion-icon id="ion-icon" name="list-box" item-start></ion-icon>
+        <span id="fontMenu">See All Requests</span>
       </button>
 
       <button menuClose ion-item (click)="openPage('GuidelinesPage')">
-        <ion-icon name="book" item-start></ion-icon>
-        GuideLines
+        <ion-icon id="ion-icon" name="book" item-start></ion-icon>
+        <span id="fontMenu">GuideLines</span>
       </button>
 
       <button menuClose ion-item (click)="openPage('AboutUsPage')">
-        <ion-icon name="ribbon" item-start></ion-icon>
-        About Us
+        <ion-icon id="ion-icon" name="ribbon" item-start></ion-icon>
+        <span id="fontMenu">About Us</span>
       </button>
 
       <button menuClose ion-item (click)="openPage('ContactUsPage')">
-        <ion-icon name="mail" item-start></ion-icon>
-        Contact Us
+        <ion-icon id="ion-icon" name="mail" item-start></ion-icon>
+        <span id="fontMenu">Contact Us</span>
       </button>
 
       <ng-template #signup>
         <button menuClose ion-item (click)="openPage('SignUpPage')">
-          <ion-icon name="paper" item-start></ion-icon>
-          Sign Up
+          <ion-icon id="ion-icon" name="paper" item-start></ion-icon>
+          <span id="fontMenu">Sign Up</span>
         </button>
   
         <button menuClose ion-item (click)=" logout('LoginPage')">
-          <ion-icon name="log-in" item-start></ion-icon>
-          Sign In
+          <ion-icon id="ion-icon" name="log-in" item-start></ion-icon>
+          <span id="fontMenu">Sign In</span>
         </button>
       </ng-template>
 
 
       <span *ngIf="authService.user$ | async as user; else signup">
-        <button *ngIf="authService.LoggingUser$ | async as loggingUser" menuClose ion-item (click)="openPage('LoginPage')">
-          <ion-icon name="person" item-start></ion-icon>
-          {{ loggingUser.Name }}
+        <button *ngIf="authService.LoggingUser$ | async as loggingUser" menuClose ion-item (click)="openPage('ProfilePage')">
+          <ion-icon id="ion-icon" name="person" item-start></ion-icon>
+          <span id="fontMenu">{{ loggingUser.Name }}</span> 
         </button>
 
         <button menuClose ion-item (click)=" logout('HomePage')">
-          <ion-icon name="log-out" item-start></ion-icon>
-          Sign Out
+          <ion-icon id="ion-icon" name="log-out" item-start></ion-icon>
+          <span id="fontMenu">Sign Out</span>
         </button>
       </span>
 

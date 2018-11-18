@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
-import { ModalController } from 'ionic-angular';
+import { ModalController, LoadingController } from 'ionic-angular';
+import { BasicInfoService } from '../../providers/basic-info/basic-info.service';
 
 /**
  * Generated class for the SeeAllRequestsComponent component.
@@ -15,13 +16,23 @@ import { ModalController } from 'ionic-angular';
 export class SeeAllRequestsComponent {
 
   requestList: any;
+  loader: any;
 
-  constructor(private db: AngularFireDatabase, private modal: ModalController) {
+  constructor(private db: AngularFireDatabase, private loading: LoadingController,
+    private modal: ModalController, private BasicInfo: BasicInfoService) {
   }
 
   ngOnInit() {
+    // loader
+    this.loader = this.loading.create({
+      content: 'Please wait',
+      spinner: 'bubbles'
+    })
+    this.loader.present();
+    // requestList
     this.requestList = this.db.list('requests', ref => ref.limitToLast(20)).valueChanges();
     console.log(this.requestList);
+    this.loader.dismiss();
   }
   open(data) {
     const myModal = this.modal.create('ModalsPage', { request: data });

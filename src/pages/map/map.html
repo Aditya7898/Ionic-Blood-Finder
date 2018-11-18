@@ -1,5 +1,25 @@
 <ion-header>
   <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+       Blood Bank
+    </ion-title>
+
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <div #map id="map" style="height:100%"></div>
+
+</ion-content>
+<ion-fab left bottom>
+  <button (click)="nearbyPlace('Blood Bank')" ion-fab mini>
+    <ion-icon name="locate"></ion-icon>
+  </button>
+</ion-fab>
+<!-- <ion-header>
+  <ion-navbar>
     <ion-title>
         <button ion-button menuToggle>
             <ion-icon name="menu"></ion-icon>
@@ -42,4 +62,4 @@
   
 <div #map id="map" style="height:100%"></div>
     
-</ion-content>
+</ion-content> -->

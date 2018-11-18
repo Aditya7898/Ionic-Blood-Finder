@@ -4,6 +4,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs';
 import * as firebase from 'firebase';
+import { User } from 'firebase';
 /*
   Generated class for the AuthServiceProvider provider.
   See https://angular.io/guide/dependency-injection for more info on providers
@@ -36,18 +37,20 @@ export class AuthService {
 
 
   // User info by user id
-// async getUser(){
-//   await this.user$.subscribe(user => {
-//     if (user) {
-//       this.LoggingUser$ = this.db.object('/users/'+ user.uid).valueChanges();
-//       this.LoggingUser$.subscribe(response => {
-//               this.LoggedInUserInfo = response;
-//                console.log(response);
-//       });
-//     }
-//   });
-//   return this.LoggedInUserInfo;
-// }
+async getUser(){
+  // this.user$ = this.afuth.authState;
+  // await this.user$.subscribe(user => {
+  //   if (user) {
+  //     this.LoggingUser$ = this.db.object('/users/'+ user.uid).valueChanges();
+  //     this.LoggingUser$.subscribe(response => {
+  //             this.LoggedInUserInfo = response;
+  //              console.log(response);
+  //     });
+  //   }
+  // });
+  return this.afuth.authState;
+}
+
   // SignUp
   async signUp(userData: FormGroup) {
    await this.afuth.auth.createUserWithEmailAndPassword(userData.value.Email, userData.value.Password)
@@ -87,12 +90,28 @@ export class AuthService {
 
   // saveProfile
  saveProfile(user: firebase.User,userData: FormGroup){
-     this.db.object('/users/' + user.uid).update({
+    console.log(user)
+    return  this.db.object('/users/' + user.uid).update({
       Name: userData.value.Name,
       BloodGroup: userData.value.BloodGroup,
-      Phone: userData.value.Contact,
+      Phone: userData.value.Phone,
       Email: userData.value.Email,
       City: userData.value.City,
+     }).then(res => {
+        console.log(res);
+        return res;
+     }).catch((error) => {
+        console.log(error);
+        return error;
      });
+    
+  }
+
+  getProfile(user: User){
+    return this.db.object(`/users/${user.uid}` ).valueChanges(); 
+  }
+
+  forgotPassword(email){
+    return this.afuth.auth.sendPasswordResetEmail(email);
   }
 }
